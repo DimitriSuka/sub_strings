@@ -1,21 +1,13 @@
-dictionary = ["below","down","go","going","horn","how","howdy","it","i",
-        "low","own","part","partner","sit", "below","down","go","going",
-        "horn","how","howdy","it","i","low","own","part","partner","sit"]
+def substring(string, dictionary)
+    matches = Hash.new(0)
 
-user_array = []
-
-def substring(word, dictionary)
-    user_input = word.downcase.split(' ')
-
-    dictionary.reduce(Hash.new(0)) do |result, value|
-        if word.include?(value)
-            result[value] = word.scan(value).length
+    for item in dictionary do 
+        if string.downcase.include? item
+            matches[item] = string.downcase.scan(item).count
         end
-        puts result
     end
+    matches
 end
 
-puts "Please enter a string:  "
-user_input = gets.chomp
-
-substring(user_input, dictionary)
+dictionary = ["below", "down", "go", "going", "horn", "how", "howdy", "it", "i", "low", "own", "part", "partner", "sit"]
+puts substring("Howdy partner, sit down! How's it going?", dictionary)
